@@ -36,7 +36,7 @@ function About({stacks}){
                 </div>
             </div>
             <div className="flex flex-col items-end  gap-10 ">
-               <div className="relative w-100 h-80 bg-charcoal rounded-t-md border-lightCharcoal border-1">
+               <div className="relative w-100 h-80 bg-stop2 rounded-t-md border-lightCharcoal border-1">
                  <img className="absolute bottom-0 left-0 right-0  w-full h-auto" src="src/assets/imgs/about-me-picture.png" alt="Eros Lucagbo Picture"></img>
                </div>
                <div className="flex flex-col w-100  h-fit border-1 border-solid border-charcoal rounded-md">

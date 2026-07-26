@@ -9,6 +9,7 @@ import { FaFigma, FaHtml5, FaJs, FaNodeJs, FaPython, FaReact } from 'react-icons
 import { FaCss, FaFlutter } from 'react-icons/fa6'
 import { RiFirebaseFill, RiTailwindCssFill } from 'react-icons/ri'
 import { SiMysql } from 'react-icons/si'
+import Services from './sections/Services'
 
 function App() {
   const stacks = [
@@ -59,7 +60,7 @@ function App() {
   ]
 
   return (
-    <main className='flex flex-col  min-h-screen max-h-full bg-red font-Familjen text-white'>
+    <main className='flex flex-col  min-h-screen max-h-full bg-red font-Familjen text-white  overflow-x-clip'>
       <Header />
       <Hero />
       <div className='flex flex-col justify-center h-20 w-full bg-charcoal overflow-x-hidden'>
@@ -98,6 +99,7 @@ function App() {
           </motion.div>   
       </div>
       <About stacks={stacks} />
+      <Services />
       <Projects/>
     </main>
   )
