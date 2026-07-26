@@ -1,9 +1,12 @@
 import { FaPython,  FaJs, FaReact,FaGithub, FaCss3Alt,FaNodeJs} from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+
 import { TiHtml5 } from "react-icons/ti";
 import { FaFlutter } from "react-icons/fa6";
+
 function Hero(){
     return(
-        <div className="grid grid-cols-3 w-full bg-gradient-to-r from-stop1 from-37% via-stop2 via-58% to-stop3 to-90% h-full px-30 pt-5">
+        <div className="grid grid-cols-3 w-full bg-gradient-to-r from-stop1 from-37% via-stop2 via-58% to-stop3 to-90% h-full px-30 pt-10">
             <div className="flex flex-col w-full gap-10 mt-[15vh] items-start">
                 <div className="flex flex-col gap-5">
                     <h1 className="font-bold text-7xl text-start">EROS LUCAGBO</h1>
@@ -43,26 +46,26 @@ function Hero(){
                     <p className="text-base text-lightCharcoal ">TECH-STACK</p>
                     <div className="grid grid-cols-4 grid-rows-2 gap-2">
                         <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <FaJs color="#A4A4A4"  />
+                            <FaJs  />
                         </div>
                         <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <TiHtml5 color="#A4A4A4"/>
+                            <TiHtml5 />
                         </div>
                         <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <FaCss3Alt color="#A4A4A4"/>
+                            <FaCss3Alt />
                         </div>
                          <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <FaJs color="#A4A4A4"  />
+                            <RiTailwindCssFill />
                             
                         </div>
                         <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <FaNodeJs  color="#A4A4A4"/>
+                            <FaNodeJs/>
                         </div>
                         <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <FaReact color="#A4A4A4"/>
+                            <FaReact/>
                         </div>
                         <div  className="border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1">
-                            <FaFlutter color="#A4A4A4"/>
+                            <FaFlutter />
                         </div>
                     </div>
                 </div>

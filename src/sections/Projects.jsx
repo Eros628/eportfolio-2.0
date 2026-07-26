@@ -1,9 +1,9 @@
 
-function Projects(){
+function Projects({stacks}){
     return(
-        <div>
+      <div className="h-100 bg-black">
 
-        </div>
+      </div>
     )
 }
 
