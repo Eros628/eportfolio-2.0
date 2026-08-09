@@ -1,5 +1,6 @@
 
 function About({stacks}){
+    
     return(
         <div className="grid grid-cols-2 bg-black px-30 pt-20 gap-y-15">
             <div className="col-span-full h-fit flex flex-col gap-2">

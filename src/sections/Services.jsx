@@ -41,7 +41,7 @@ function Services(){
     const slideX = useTransform(scrollYProgress, [0, 1], ["80%", "14%"]);
 
     return(
-        <div ref={card} className=" flex flex-col bg-black h-full pt-[40vh]">
+        <div ref={card} className=" flex flex-col bg-black h-full ">
             <motion.div 
             style={{x: slideX}}
             transition={{ease: "linear", duration:0.5}}
