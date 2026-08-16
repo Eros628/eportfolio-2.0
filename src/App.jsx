@@ -62,6 +62,7 @@ function App() {
   ]
 
   const container = useRef(null);
+  const aboutContainer = useRef(null)
 
 
   const {scrollYProgress} = useScroll({
@@ -72,14 +73,15 @@ function App() {
   const [opacity, setOpacity] = useState(1);
 
 
-  const scale = useTransform(scrollYProgress, [0.5, 1], [1, 0.7] );
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 0.9, 0.5] );
 
-  const opacityScroll = useTransform(scrollYProgress, [0, 0.4, 0.8], [1, 1, 0]);
+  const opacityScroll = useTransform(scrollYProgress, [0, 0.2, 0.5], [1, 1, 0]);
+  const backgroundColor = useTransform(scrollYProgress, [0.1, 0.5], ["rgb(24, 24, 24)", "rgb(244, 243, 238)"])
 
-  const widthImg = useTransform(scrollYProgress, [0, 1], ["400px", "340px"]);
-  const height= useTransform(scrollYProgress, [0, 1], ["100vh", "5vh"] );
-  const width= useTransform(scrollYProgress, [0, 1], ["100vw", "1vw"] );
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["0px", "100px"]);
+  const widthImg = useTransform(scrollYProgress, [0, 0.5], ["600px", "550px"]);
+  const height= useTransform(scrollYProgress, [0, 0.5], ["100vh" ,"0vh"] );
+  const width= useTransform(scrollYProgress, [0, 0.5], ["100vw","40vw"] );
+  const borderRadius = useTransform(scrollYProgress, [0, 0.2 ,0.5], ["0px", "50px", "100px"]);
 
   useMotionValueEvent(opacityScroll, "change", (latestvalue)=>{
     setOpacity(latestvalue);
@@ -88,21 +90,25 @@ function App() {
   return (
     <main className='flex flex-col  min-h-screen max-h-full  font-Familjen text-white overflow-x-clip'>
       <Header />
-      <motion.div ref={container} className='h-[600vh] flex flex-col w-full items-center'>
+      <motion.div ref={container} className='h-[400vh] flex flex-col w-full items-center'>
         <div className={`sticky top-[60px] h-screen w-full justify-center`}>
             <motion.div 
-            style={{ opacity, scale, height, width, borderRadius}}   className='sticky top-0 mx-auto flex overflow-hidden justify-center items-center'>
+            style={{ opacity, scale, height, width, borderRadius}}   className='top-0 mx-auto flex overflow-hidden justify-center items-center'>
               <Hero />
             </motion.div>
-            <div className='sticky top-0 h-screen w-screen'>
-               <About stacks={stacks}/>
-            </div>
-          
-        </div>
-        <motion.div style={{width: widthImg}}  className="fixed w-[100px] h-auto mx-auto bottom-0">
+            <About stacks={stacks}/>
+            <motion.div style={{width: widthImg}}  className="absolute w-[100px] h-auto mx-auto left-0 right-0 bottom-0">
               <img src="src/assets/imgs/picture-big-hero-section.png"alt="Eros Lucagbo Picture"/>
-        </motion.div>
+            </motion.div>
+        </div>
+       
       </motion.div>
+      <div className='h-screen w-screen bg-black'>
+
+      </div>
+      <div className='h-screen w-screen'>
+
+      </div>
     </main>
   )
 }

@@ -1,57 +1,57 @@
+import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { LiaAsteriskSolid } from "react-icons/lia";
 
 function About({stacks}){
-    
+  
+    const aboutContainer = useRef(null);
+
+    const {scrollYProgress} = useScroll({
+        target: aboutContainer,
+        offset: ["start center", "end end"]
+    });
+
+ 
+
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [0, 0, 1]);
+    const opacity2 = useTransform(scrollYProgress, [0, 0.5, 0.8], [0, 0, 1]);
+
     return(
-        <div className="grid grid-cols-2 bg-black px-30 pt-20 gap-y-15">
-            <div className="col-span-full h-fit flex flex-col gap-2">
-                <h1 className="text-7xl font-bold">ABOUT ME</h1>
-                <hr className="w-40"></hr>
+        <div ref={aboutContainer} className="top-0 grid grid-cols-3 grid-rows-[100px] w-screen h-screen px-50">
+            <motion.div className="w-full col-span-full flex justify-center items-center relative">
+                <motion.h1
+                style={{opacity}}
+                transition={{ease: 'easeIn', duration: 1}}
+                className="absolute -bottom-25 text-9xl font-bold text-rust">ABOUT ME</motion.h1>
+            </motion.div>
+            <div className=" w-full flex items-center ">
+                <motion.div 
+                style={{opacity: opacity2,transformOrigin: "top top" }}
+                transition={{ease: "anticipate", duration: 0.5, delay: 2}}
+                className=" flex flex-col gap-10">
+                    <p className="text-charcoal text-xl">
+                        Hi, I'm Eros Lucagbo, <span className="text-terracota text-bold">a software developer</span> based in Cagayan de Oro City with a <span className="text-terracota text-bold">B.S in Computer Science</span> 
+                        from the University of Science and Technology of Southern Philippines. I am passionate about solving complex technical problems and building accessible software applications across both web and mobile platforms.</p>
+                    <p className="text-charcoal text-xl">
+                        As an early-career developer, I have <span className="text-terracota text-bold">built a solid foundation in modern frameworks</span> 
+                        and <span className="text-terracota text-bold">thrive</span> in environments where I can continuously learn and adapt. 
+                        My ultimate goal is to <span className="text-terracota text-bold">write clean</span>, <span className="text-terracota text-bold">effective</span> code 
+                        that translates into real-world applications that genuinely help people. I am highly motivated to bring my dedication, 
+                        <span className="text-terracota text-bold"> problem-solving skills</span>, and growing <span className="text-terracota text-bold">technical tooklit</span>
+                         to a <span className="text-terracota text-bold"> collaborative</span> engineering team.</p>
+                </motion.div>
             </div>
-            <div className="flex flex-col gap-10">
-                <div className="text-base text-justify flex flex-col gap-5">
-                    <p>
-                        Hi, I'm Eros Lucagbo, a software developer based in Cagayan de Oro City 
-                        with a B.S. in Computer Science from the University of Science and Technology of Southern Philippines.
-                        I am passionate about solving complex technical problems and building accessible software applications across both web and mobile platforms.
-                    </p>
-                    <p>
-                        As an early-career developer, I have built a solid foundation in modern frameworks and thrive in environments where I can continuously learn and adapt. 
-                        My ultimate goal is to write clean, effective code that translates into real-world applications that genuinely help people. 
-                        I am highly motivated to bring my dedication, problem-solving skills, and growing technical toolkit to a collaborative engineering team.
-                    </p>
+            <div className="w-5"></div>
+            <div className="flex flex-col w-full items-end gap-5 justify-center">
+                <p className="text-rust text-bold text-xl ">TECHNICAL TOOLKIT</p>
+                <div className="flex  w-full flex-wrap h-fit gap-x-1 gap-y-4 content-start justify-end bg-red-500">
+                    {stacks.map((item, index)=>{
+                        return <div className="flex justify-center  h-fit border-solid border-1 rounded-md border-deep-charcoal  items-center p-2 text-charcoal gap-2 text-lg" key={index}>
+                                {item.logo}
+                                <p>{item.name}</p>
+                             </div>
+                    })}
                 </div>
-                <div className="flex flex-col gap-5">
-                    <p className="text-sm text-lightCharcoal">
-                        TECHNICAL TOOLKIT
-                    </p>
-                    <div className="flex flex-row flex-wrap gap-2">
-                        {
-                            stacks.map((item, index)=>(
-                                <div className="flex gap-2 items-center border-1 bg-charcoal rounded-md border-solid border-lightCharcoal px-3 py-1" key={index}>
-                                    {item.logo}
-                                    <p className="">{item.name}</p>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-            </div>
-            <div className="flex flex-col items-end  gap-10 ">
-               <div className="relative w-100 h-80 bg-stop2 rounded-t-md border-lightCharcoal border-1">
-                 <img className="absolute bottom-0 left-0 right-0  w-full h-auto" src="src/assets/imgs/about-me-picture.png" alt="Eros Lucagbo Picture"></img>
-               </div>
-               <div className="flex flex-col w-100  h-fit border-1 border-solid border-charcoal rounded-md">
-                 <div className="flex bg-white w-full px-5 py-1">
-                    <p className="text-base font-bold text-black">PROFESSIONAL PATH</p>
-                 </div>
-                 <div className="flex flex-row items-start justify-between px-5 py-5">
-                    <div className="flex flex-col border-left-solid border-l-1 border-lightCharcoal px-2">
-                        <p className="text-base">Web Developer Intern</p>
-                        <p className="text-sm text-lightCharcoal">Syntactics, Inc.</p>
-                    </div>
-                    <p className="text-sm text-lightCharcoal">Aug 2024 - July 2024</p>
-                 </div>
-               </div>
             </div>
         </div>
     )
