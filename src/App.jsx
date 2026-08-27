@@ -3,14 +3,16 @@ import Hero from './sections/Hero'
 import Header from './components/Header'
 import About from './sections/About'
 import Projects from './sections/Projects'
+import Services from './sections/Services'
 import { useRef } from 'react'
 import { motion , useMotionValueEvent, useScroll, useTransform} from 'framer-motion'
 import { AnimatePresence } from 'framer-motion'
 import { FaFigma, FaHtml5, FaJs, FaNodeJs, FaPython, FaReact } from 'react-icons/fa'
+import { BiLogoPostgresql } from "react-icons/bi";
 import { FaCss, FaFlutter } from 'react-icons/fa6'
 import { RiFirebaseFill, RiTailwindCssFill } from 'react-icons/ri'
 import { SiMysql } from 'react-icons/si'
-import Services from './sections/Services'
+
 
 
 function App() {
@@ -58,6 +60,10 @@ function App() {
     {
       name: "Firebase",
       logo: <RiFirebaseFill/>
+    },
+    {
+      name: "PostgresSQL",
+      logo: <BiLogoPostgresql />
     }
   ]
 
@@ -103,12 +109,7 @@ function App() {
         </div>
        
       </motion.div>
-      <div className='h-screen w-screen bg-black'>
-
-      </div>
-      <div className='h-screen w-screen'>
-
-      </div>
+      <Services />
     </main>
   )
 }

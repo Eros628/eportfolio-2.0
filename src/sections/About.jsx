@@ -24,7 +24,7 @@ function About({stacks}){
                 transition={{ease: 'easeIn', duration: 1}}
                 className="absolute -bottom-25 text-9xl font-bold text-rust">ABOUT ME</motion.h1>
             </motion.div>
-            <div className=" w-full flex items-center ">
+            <div className=" w-full flex items-center">
                 <motion.div 
                 style={{opacity: opacity2,transformOrigin: "top top" }}
                 transition={{ease: "anticipate", duration: 0.5, delay: 2}}
@@ -42,15 +42,35 @@ function About({stacks}){
                 </motion.div>
             </div>
             <div className="w-5"></div>
-            <div className="flex flex-col w-full items-end gap-5 justify-center">
-                <p className="text-rust text-bold text-xl ">TECHNICAL TOOLKIT</p>
-                <div className="flex  w-full flex-wrap h-fit gap-x-1 gap-y-4 content-start justify-end bg-red-500">
-                    {stacks.map((item, index)=>{
-                        return <div className="flex justify-center  h-fit border-solid border-1 rounded-md border-deep-charcoal  items-center p-2 text-charcoal gap-2 text-lg" key={index}>
-                                {item.logo}
-                                <p>{item.name}</p>
-                             </div>
-                    })}
+            <div className="flex flex-col w-full gap-15 justify-center">
+                <div className="flex flex-col items-end gap-5">
+                    <p className="text-rust text-bold text-lg ">TECHNICAL TOOLKIT</p>
+                    <div className="flex  w-full flex-wrap h-fit gap-x-1 gap-y-4 content-start justify-end">
+                        {stacks.map((item, index)=>{
+                            return <div className="flex justify-center  h-fit border-solid border-1 rounded-md border-deep-charcoal  items-center p-2 text-charcoal gap-2 text-lg" key={index}>
+                                    {item.logo}
+                                    <p>{item.name}</p>
+                                </div>
+                        })}
+                    </div>
+                </div>
+                <div className="flex flex-col items-end w-full gap-2"> 
+                    <p className="text-rust text-bold text-lg">PROFESSIONAL EXPERIENCE</p>  
+               
+                    <div className="flex flex-col gap-7 items-start border-r-1 border-r-charcoal border-r-solid">
+                        <div className="flex flex-col items-end relative pr-5">
+                            <p className="text-charcoal text-bold text-lg">Web Developer Intern</p>
+                            <p className="text-lightCharcoal text-bold text-sm">Syntactics, Inc. | June - August 2024</p>
+                            <div className="rounded-lg h-[15px] w-[15px] bg-rust absolute -right-2 bottom-1/2"></div>
+                        </div>
+
+                        <div className="flex flex-col items-end relative pr-5 w-full h-full">
+                            <p className="text-charcoal text-bold text-base">Your Next Team Member?</p>
+                            <p className="text-lightCharcoal text-bold text-sm">pending | pending</p>
+                            <div className="rounded-lg h-[15px] w-[15px] bg-dark-gray absolute -right-2 bottom-1/2"></div>
+                        </div>
+                    </div>
+                 
                 </div>
             </div>
         </div>

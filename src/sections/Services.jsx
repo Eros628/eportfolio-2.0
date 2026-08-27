@@ -15,37 +15,41 @@ function Services(){
         {
             title: "Web & Mobile Engineering",
             desc: "Transforming static UI designs into fluid, interactive, and responsive applications. Whether building single-page web apps with React or cross-platform mobile solutions with Flutter, I bridge the gap between design and fully functional software.",
-            color: "bg-neutral-core",
-            icon: <FaCode size={50} color="#A4A4A4" />
+            color: "bg-dark-gray",
+            textColor: "text-cream",
+            icon: <FaCode size={50} color="#EAE8E0" />
         },
         {
             title: "Clean & Structured Architecture",
             desc: "Writing code that is not just functional, but readable and scalable. I approach every project with an organized mindset, ensuring the underlying structure is easy to maintain, debug, and expand as the application grows.",
-            color: "bg-deep-emerald",
-            icon: <PiTreeStructure size={50} color="#A4A4A4" />
+            color: "bg-[#322B27]",
+            textColor: "text-cream",
+            icon: <PiTreeStructure size={50} color="#EAE8E0" />
         },
         {
             title: "Rapid Tech Adoption",
             desc: "Built on a strong foundation of core programming principles, I adapt quickly to new environments. From picking up new tech stacks to diving into complex AI research, I am constantly learning and eager to tackle new challenges.",
-            color:"bg-mid-indigo",
-            icon: <IoIosRocket size={50} color="#A4A4A4" />
+            color:"bg-light-gray",
+            textColor: "text-deep-charcoal ",
+            icon: <IoIosRocket size={50} color="#181818" />
         },
         {
             title: "Collaborative Workflow",
             desc: "Great software is built by great teams. I am a strong communicator who values clear feedback, shared goals, and working cross-functionally to build efficient systems that truly solve user problems.",
-            color: "bg-warm-graphite",
-            icon: <FaUsers size={50} color="#A4A4A4" />
+            color: "bg-cream",
+            textColor: "text-deep-charcoal",
+            icon: <FaUsers size={50} color="#181818" />
         }
     ]
 
     const slideX = useTransform(scrollYProgress, [0, 1], ["80%", "14%"]);
 
     return(
-        <div ref={card} className=" flex flex-col bg-black h-full ">
+        <div ref={card} className=" flex flex-col bg-deep-charcoal h-full ">
             <motion.div 
             style={{x: slideX}}
             transition={{ease: "linear", duration:0.5}}
-            className="text-[10rem] sticky top-20 font-bold text-charcoal">
+            className="text-[10rem] sticky top-20 font-bold text-rust">
                  <h1 >WHAT I OFFER</h1>
             </motion.div>
             {

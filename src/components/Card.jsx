@@ -13,11 +13,11 @@ function Card({index, targetScale, range, item, scrollYProgress}){
             style={{scale}}
             className={`sticky top-0 h-[100vh] w-full flex justify-center items-center pb-[20vh]`}
                 > 
-                <div style={{top:`calc(10% + ${index * 25}px)`}} className={`relative  flex flex-col gap-10 w-1/2 h-100 justify-center items-center p-10 rounded-[25px] ${item.color} border-1 border-lightCharcoal border-solid`}>
+                <div style={{top:`calc(10% + ${index * 25}px)`}} className={`relative  flex flex-col gap-10 w-1/2 h-100 justify-center items-center p-10 rounded-[25px] ${item.color} ${item.textColor} border-1 border-lightCharcoal border-solid`}>
                     {item.icon}
                     <div className="flex flex-col gap-5 items-center">
                         <p className="text-4xl font-bold">{item.title}</p>
-                        <p className="text-base font-Familjen font-normal text-center">{item.desc}</p>
+                        <p className="text-xl font-Familjen font-normal text-center">{item.desc}</p>
                     </div>
                 </div>
         </motion.div>
