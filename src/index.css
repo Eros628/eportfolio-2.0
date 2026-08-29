@@ -5,6 +5,7 @@
 
 @theme {
   --font-Familjen: "Familjen Grotesk", sans-serif;
+  --font-Space-Mono: "Space Mono", sans-serif;
 
   --color-lightCharcoal: #A4A4A4;
   --color-charcoal: #1A1A1A;
@@ -15,6 +16,7 @@
   --color-rust: #C15F3C;
   --color-dark-gray: #222222;
   --color-light-gray: #F3F2EF;
+  --color-clay: #d97757;
 
   --color-stop1: #1F1F1F;
   --color-stop2: #131313;

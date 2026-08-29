@@ -110,6 +110,7 @@ function App() {
        
       </motion.div>
       <Services />
+      <Projects stacks={stacks}/>
     </main>
   )
 }
