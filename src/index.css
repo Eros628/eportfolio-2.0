@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kiwi+Maru&family=Momo+Trust+Display&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
 
 
 @theme {
   --font-Familjen: "Familjen Grotesk", sans-serif;
+  --font-Antic: "Antic Didone", sans-serif;
   --font-Space-Mono: "Space Mono", sans-serif;
+  --font-Instrument-Sans: "Instrument Sans", sans-serif;
 
   --color-lightCharcoal: #A4A4A4;
   --color-charcoal: #1A1A1A;
