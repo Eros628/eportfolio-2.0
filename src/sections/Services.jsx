@@ -45,11 +45,11 @@ function Services(){
     const slideX = useTransform(scrollYProgress, [0, 1], ["80%", "14%"]);
 
     return(
-        <div ref={card} className=" flex flex-col bg-deep-charcoal h-full ">
+        <div ref={card} className=" flex flex-col bg-deep-charcoal h-full">
             <motion.div 
             style={{x: slideX}}
             transition={{ease: "linear", duration:0.5}}
-            className="text-[10rem] sticky top-20 font-bold text-rust">
+            className="text-[10rem] sticky top-20 h-screen font-bold text-rust">
                  <h1 >WHAT I OFFER</h1>
             </motion.div>
             {
