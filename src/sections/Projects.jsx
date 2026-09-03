@@ -9,6 +9,9 @@ function Projects({stacks}){
   const x = useTransform(xPosition, (v)=> `${v}%`);
   const [isHover, setIsHover] = useState(false);
 
+  const [isHoverFirstContainer, setisHoverFirstContainer] = useState(false);
+  const [isHoverSecondContainer, setIsHoverSecondContainer] = useState(false);
+
   const containerProject = useRef(null);
 
   const inView = useInView(containerProject);
@@ -115,10 +118,63 @@ function Projects({stacks}){
                   </div>
                   
                 </div>
-                <div className="grid grid-rows-[450px_200px] grid-cols-2 items-center w-full  gap-10">
-                  <div className="w-full h-full bg-gray-500 rounded-md col-span-full"></div>
-                  <div className="w-full h-full bg-gray-500  rounded-md"></div>
-                  <div className="w-full h-full bg-gray-500  rounded-md"></div>
+                <div className="flex flex-col items-center w-full  gap-5">
+                  <motion.div onMouseEnter={
+                    ()=>{
+                      setisHoverFirstContainer(true);
+                    }
+                  } 
+                    onMouseLeave={
+                      ()=>{
+                        setisHoverFirstContainer(false);
+                      }
+                    }
+                  animate={{
+                    background: isHoverFirstContainer? "radial-gradient(circle at center top, #2D4B35 0%, #131313 76%)": "radial-gradient(circle at center top, #424342 0%, #181818 76%)" ,
+                    border: isHoverFirstContainer ? "1px solid #2D4B35" : "none"
+                  }}
+                  className="flex items-center justify-center w-full h-1/2  rounded-xl relative">
+                    <motion.div 
+                    animate={{x: isHoverFirstContainer ? -70 : 0}}
+                    transition={{ease: 'easeInOut', duration: 0.5}}
+                    className="w-[200px] h-max left-30 absolute shadow-xl">
+                      <img src="src/assets/imgs/plastiCash-project-home-ui.png" alt="PlastiCash Home Page UI" />
+                    </motion.div>
+                    <motion.div
+                    animate={{y: isHoverFirstContainer ? 10 : 0}}
+                    transition={{ease: 'easeInOut', duration: 0.5}}
+                    className="w-[210px] top-5 h-max absolute z-1 shadow-xl">
+                      <img src="src/assets/imgs/plastiCash-project-start-ui.png" alt="PlastiCash Start Up UI" />
+                    </motion.div>
+                    <motion.div 
+                    animate={{x: isHoverFirstContainer ? 70 : 0}}
+                    transition={{ease: 'easeInOut', duration: 0.5}}
+                    className="w-[200px] right-30 h-max absolute ">
+                      <img  src="src/assets/imgs/plastiCash-project-user-ui.png " alt="PlastiCash User Page UI " />
+                    </motion.div>
+                  </motion.div>
+                  <div onMouseEnter={
+                    ()=>{
+                      setIsHoverSecondContainer(true);
+                    }
+                  } 
+                  onMouseLeave={
+                    ()=>{
+                      setIsHoverSecondContainer(false);
+                    }
+                  }
+                  className="w-full h-[200px] bg-dark-green  rounded-xl relative flex items-center justify-center overflow-hidden">
+                    <motion.div 
+                    animate={{x: isHoverSecondContainer ? -100 : 0, y: isHoverSecondContainer ? -40 : 0}}
+                    className="w-[440px] h-max absolute -bottom-10 -right-30">
+                      <img src="src/assets/imgs/plastiCash-project-machine-count-ui.png" alt="PlastiCash Machine Count Bottle UI" />
+                    </motion.div>
+                    <motion.div 
+                    animate={{x: isHoverSecondContainer ? 100 : 0, y: isHoverSecondContainer ? 40 : 0}}
+                    className="w-[450px] h-max absolute -left-40 -top-10">
+                      <img src="src/assets/imgs/plastiCash-project-machine-start-ui.png" alt="PlastiCash Machine Start up UI" />
+                    </motion.div>
+                  </div>
                 </div>
             </div>
           </div>
