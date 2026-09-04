@@ -1,7 +1,6 @@
 import { motion, useAnimationFrame, useInView, useMotionValue, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
-import { FiGithub } from "react-icons/fi";
-import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import ProjectCard from "../components/ProjectCard";
 
 
 function Projects({stacks}){
@@ -15,6 +14,7 @@ function Projects({stacks}){
   const containerProject = useRef(null);
 
   const inView = useInView(containerProject);
+
 
 
   useAnimationFrame((time, delta)=>{
@@ -35,9 +35,18 @@ function Projects({stacks}){
     }
 
     xPosition.set(nextX);
-
-  
   })
+
+  const projects = [
+    {
+      number: "01",
+      title: "PlastiCash",
+      description: "PlastiCash is an IoT smart recycling ecosystem that rewards users for depositing plastic bottles. Collaborating with a hardware engineer, I architected the real-time cloud synchronization between the machine's ESP32 module and a Firebase backend. I designed and built two complete Flutter applications - a machine operating interface and a gamified consumer app where users can locate nearby stations via OpenStreetMap API, scan QR codes, track deposits, and redeem points to an e-wallet. The project successfully bridges hardware and software to turn eco-friendly habits into a seamless, tech-driven experience",
+      toolkit: ["Flutter", "Firebase", "Dart", "Arduino", "ESP32"],
+      sourceCode: "https://github.com/Eros628/PlastiCash_App",
+      liveURL: ""
+    }
+  ]
 
     return(
       <div ref={containerProject} className="h-full w-full flex flex-col bg-deep-charcoal px-50">
@@ -79,46 +88,8 @@ function Projects({stacks}){
             </div>
           </div>
 
-          <div className="flex flex-col pt-20">
-            <div className="flex flex-row w-full h-screen gap-20">
-                <div className="flex w-full flex-col gap-10">
-                  <div className="flex flex-row items-center gap-1">
-                    <p className="text-rust font-Antic text-bold text-5xl italic">01</p>
-                    <div className="h-full w-full flex  pt-7"><hr className="w-1/2 border-dark-gray"/></div>
-                    
-                  </div>
-                  <p className="text-white font-bold text-7xl">PlastiCash</p>
-                  <p className="text-white-200 text-lg font-Instrument-Sans">PlastiCash is an IoT smart recycling ecosystem that rewards users for depositing plastic bottles. 
-                    As the full-stack developer, I connected physical Arduino hardware to the cloud in real-time using an ESP32 module and a Firebase backend. 
-                    I designed and built two complete Flutter applications—a machine operating interface and a gamified consumer app where users can 
-                    locate nearby stations via OpenStreetMap, scan QR codes, track deposits, and redeem points to an e-wallet. 
-                    The project successfully bridges hardware and software to turn eco-friendly habits into a seamless, tech-driven experience.
-                  </p>
-                  <div className="flex flex-col gap-5">
-                    <p className=" text-lightCharcoal">TOOLKIT</p>
-                    <div className="flex flex-row gap-5">
-                      <div className="py-2 px-5 bg-dark-gray border-1 border-solid border-lightCharcoal rounded-full"><p>Flutter</p></div>
-                      <div className="py-2 px-5  bg-dark-gray border-1 border-solid border-lightCharcoal rounded-full"><p>Dart</p></div>
-                      <div className="py-2 px-5  bg-dark-gray border-1 border-solid border-lightCharcoal rounded-full"><p>Firebase</p></div>
-                      <div className="py-2 px-5  bg-dark-gray border-1 border-solid border-lightCharcoal rounded-full"><p>Arduino</p></div>
-                      <div className="py-2 px-5  bg-dark-gray border-1 border-solid border-lightCharcoal rounded-full"><p>ESP32</p></div>
-                     
-                    </div>
-                  </div>
-                  <div className="flex flex-row gap-10 mt-10">
-                    <button className="bg-none  flex gap-2 items-center">
-                      <FiGithub color="#C15F3C" size={20}/>
-                      <p className="text-rust">View Source Code</p>
-                    </button>
-
-                    <button className="flex items-center gap-2">
-                      <FaArrowUpRightFromSquare  color="#C15F3C"/>
-                      <p className="text-rust">View Live</p>
-                    </button>
-                  </div>
-                  
-                </div>
-                <div className="flex flex-col items-center w-full  gap-5">
+          <ProjectCard projects={projects[0]} >
+            <div className="flex flex-col items-center w-full  gap-5">
                   <motion.div onMouseEnter={
                     ()=>{
                       setisHoverFirstContainer(true);
@@ -131,29 +102,37 @@ function Projects({stacks}){
                     }
                   animate={{
                     background: isHoverFirstContainer? "radial-gradient(circle at center top, #2D4B35 0%, #131313 76%)": "radial-gradient(circle at center top, #424342 0%, #181818 76%)" ,
-                    border: isHoverFirstContainer ? "1px solid #2D4B35" : "none"
+                    border: isHoverFirstContainer ? "1px solid #2D4B35" : " 1px solid transparent"
                   }}
-                  className="flex items-center justify-center w-full h-1/2  rounded-xl relative">
-                    <motion.div 
-                    animate={{x: isHoverFirstContainer ? -70 : 0}}
-                    transition={{ease: 'easeInOut', duration: 0.5}}
-                    className="w-[200px] h-max left-30 absolute shadow-xl">
-                      <img src="src/assets/imgs/plastiCash-project-home-ui.png" alt="PlastiCash Home Page UI" />
-                    </motion.div>
-                    <motion.div
-                    animate={{y: isHoverFirstContainer ? 10 : 0}}
-                    transition={{ease: 'easeInOut', duration: 0.5}}
-                    className="w-[210px] top-5 h-max absolute z-1 shadow-xl">
-                      <img src="src/assets/imgs/plastiCash-project-start-ui.png" alt="PlastiCash Start Up UI" />
-                    </motion.div>
-                    <motion.div 
-                    animate={{x: isHoverFirstContainer ? 70 : 0}}
-                    transition={{ease: 'easeInOut', duration: 0.5}}
-                    className="w-[200px] right-30 h-max absolute ">
-                      <img  src="src/assets/imgs/plastiCash-project-user-ui.png " alt="PlastiCash User Page UI " />
-                    </motion.div>
+                  className="flex flex-col w-full h-1/2 box-border  rounded-xl">
+                    <div className="flex gap-2 items-center px-8 py-5">
+                      <div className="h-[10px] w-[10px] rounded-full bg-dark-green"></div>
+                      <p className="text-sm text-white"><span className="text-lightCharcoal">User app</span> &mdash; consumer experience</p>
+                    </div>
+                    <div className="flex justify-center items-center w-full  h-full relative">
+                      <motion.div 
+                      animate={{x: isHoverFirstContainer ? -70 : 0}}
+                      transition={{ease: 'easeInOut', duration: 0.5}}
+                      className="w-[200px] h-max left-30 absolute shadow-xl">
+                        <img src="src/assets/imgs/plastiCash-project-home-ui.png" alt="PlastiCash Home Page UI" />
+                      </motion.div>
+                      <motion.div
+                      animate={{y: isHoverFirstContainer ? 10 : 0}}
+                      transition={{ease: 'easeInOut', duration: 0.5}}
+                      className="w-[210px] -top-2 h-max absolute z-1 shadow-xl">
+                        <img src="src/assets/imgs/plastiCash-project-start-ui.png" alt="PlastiCash Start Up UI" />
+                      </motion.div>
+                      <motion.div 
+                      animate={{x: isHoverFirstContainer ? 70 : 0}}
+                      transition={{ease: 'easeInOut', duration: 0.5}}
+                      className="w-[200px] right-30 h-max absolute ">
+                        <img  src="src/assets/imgs/plastiCash-project-user-ui.png " alt="PlastiCash User Page UI " />
+                      </motion.div>
+                    </div>
                   </motion.div>
-                  <div onMouseEnter={
+                  <motion.div 
+                  animate={{background: isHoverSecondContainer ? "linear-gradient(to right, #1c5c47, #16352a 70%)" : "linear-gradient(to right, #1e4a3a, #16352a 70%)", border: isHoverSecondContainer ? "1px solid #1c5c47" : " 1px solid transparent"}}
+                  onMouseEnter={
                     ()=>{
                       setIsHoverSecondContainer(true);
                     }
@@ -163,21 +142,24 @@ function Projects({stacks}){
                       setIsHoverSecondContainer(false);
                     }
                   }
-                  className="w-full h-[200px] bg-dark-green  rounded-xl relative flex items-center justify-center overflow-hidden">
+                  className="w-full h-[200px] rounded-xl relative flex  overflow-hidden">
+                    <div className="flex flex-col gap-7 px-8 py-5">
+                      <div className="flex flex-row gap-2 items-center">
+                        <div className="h-[10px] w-[10px] rounded-full bg-white"></div>
+                        <p className="text-sm text-white font-thin"><span className="text-lightCharcoal">Machine App</span> &mdash; kiosk interface</p>
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="text-xl text-white font-bold">Bottle it up, Cash it out</p>
+                        <p className="text-base text-white font-thin">The in-device interface running on the recycling kiosk itself</p>
+                      </div>
+                    </div>
                     <motion.div 
-                    animate={{x: isHoverSecondContainer ? -100 : 0, y: isHoverSecondContainer ? -40 : 0}}
-                    className="w-[440px] h-max absolute -bottom-10 -right-30">
-                      <img src="src/assets/imgs/plastiCash-project-machine-count-ui.png" alt="PlastiCash Machine Count Bottle UI" />
+                    className="w-full h-max ">
+                      <img src="src/assets/imgs/plastiCash-project-machine-start-ui.png" alt="PlastiCash Machine Count Bottle UI" />
                     </motion.div>
-                    <motion.div 
-                    animate={{x: isHoverSecondContainer ? 100 : 0, y: isHoverSecondContainer ? 40 : 0}}
-                    className="w-[450px] h-max absolute -left-40 -top-10">
-                      <img src="src/assets/imgs/plastiCash-project-machine-start-ui.png" alt="PlastiCash Machine Start up UI" />
-                    </motion.div>
-                  </div>
-                </div>
-            </div>
-          </div>
+                  </motion.div>
+              </div>
+          </ProjectCard>
       </div>
     )
 }
