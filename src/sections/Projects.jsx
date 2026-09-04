@@ -46,6 +46,7 @@ function Projects({stacks}){
       sourceCode: "https://github.com/Eros628/PlastiCash_App",
       liveURL: ""
     }
+   
   ]
 
     return(
@@ -87,9 +88,81 @@ function Projects({stacks}){
               </motion.div>
             </div>
           </div>
-
-          <ProjectCard projects={projects[0]} >
-            <div className="flex flex-col items-center w-full  gap-5">
+          <div className="flex flex-col">
+            <ProjectCard projects={projects[0]} >
+              <div className="flex flex-col items-center justify-center w-full h-full  gap-5">
+                  <motion.div onMouseEnter={
+                    ()=>{
+                      setisHoverFirstContainer(true);
+                    }
+                  } 
+                    onMouseLeave={
+                      ()=>{
+                        setisHoverFirstContainer(false);
+                      }
+                    }
+                  animate={{
+                    background: isHoverFirstContainer? "radial-gradient(circle at center top, #2D4B35 0%, #131313 76%)": "radial-gradient(circle at center top, #424342 0%, #181818 76%)" ,
+                    border: isHoverFirstContainer ? "1px solid #2D4B35" : " 1px solid transparent"
+                  }}
+                  className="flex flex-col w-full h-1/2 box-border  rounded-xl">
+                    <div className="flex gap-2 items-center px-8 py-5">
+                      <div className="h-[10px] w-[10px] rounded-full bg-dark-green"></div>
+                      <p className="text-sm text-white"><span className="text-lightCharcoal">User app</span> &mdash; consumer experience</p>
+                    </div>
+                    <div className="flex justify-center items-center w-full  h-full relative">
+                      <motion.div 
+                      animate={{x: isHoverFirstContainer ? -70 : 0}}
+                      transition={{ease: 'easeInOut', duration: 0.5}}
+                      className="w-[200px] h-max left-30 absolute shadow-xl">
+                        <img src="src/assets/imgs/plastiCash-project-home-ui.png" alt="PlastiCash Home Page UI" />
+                      </motion.div>
+                      <motion.div
+                      animate={{y: isHoverFirstContainer ? 10 : 0}}
+                      transition={{ease: 'easeInOut', duration: 0.5}}
+                      className="w-[210px] -top-2 h-max absolute z-1 shadow-xl">
+                        <img src="src/assets/imgs/plastiCash-project-start-ui.png" alt="PlastiCash Start Up UI" />
+                      </motion.div>
+                      <motion.div 
+                      animate={{x: isHoverFirstContainer ? 70 : 0}}
+                      transition={{ease: 'easeInOut', duration: 0.5}}
+                      className="w-[200px] right-30 h-max absolute ">
+                        <img  src="src/assets/imgs/plastiCash-project-user-ui.png " alt="PlastiCash User Page UI " />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                  animate={{background: isHoverSecondContainer ? "linear-gradient(to right, #1c5c47, #16352a 70%)" : "linear-gradient(to right, #1e4a3a, #16352a 70%)", border: isHoverSecondContainer ? "1px solid #1c5c47" : " 1px solid transparent"}}
+                  onMouseEnter={
+                    ()=>{
+                      setIsHoverSecondContainer(true);
+                    }
+                  } 
+                  onMouseLeave={
+                    ()=>{
+                      setIsHoverSecondContainer(false);
+                    }
+                  }
+                  className="w-full h-[200px] rounded-xl relative flex  overflow-hidden">
+                    <div className="flex flex-col gap-7 px-8 py-5">
+                      <div className="flex flex-row gap-2 items-center">
+                        <div className="h-[10px] w-[10px] rounded-full bg-white"></div>
+                        <p className="text-sm text-white font-thin"><span className="text-lightCharcoal">Machine App</span> &mdash; kiosk interface</p>
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="text-xl text-white font-bold">Bottle it up, Cash it out</p>
+                        <p className="text-base text-white font-thin">The in-device interface running on the recycling kiosk itself</p>
+                      </div>
+                    </div>
+                    <motion.div 
+                    className="w-full h-full scale-[1.1] translate-y-5">
+                      <img src="src/assets/imgs/plastiCash-project-machine-start-ui.png" alt="PlastiCash Machine Count Bottle UI" />
+                    </motion.div>
+                  </motion.div>
+              </div>
+           </ProjectCard>
+             <ProjectCard projects={projects[0]} >
+              <div className="flex flex-col items-center justify-center w-full h-full  gap-5">
                   <motion.div onMouseEnter={
                     ()=>{
                       setisHoverFirstContainer(true);
@@ -159,7 +232,9 @@ function Projects({stacks}){
                     </motion.div>
                   </motion.div>
               </div>
-          </ProjectCard>
+           </ProjectCard>
+          </div>
+         
       </div>
     )
 }
