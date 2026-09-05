@@ -41,7 +41,7 @@ function About({stacks}){
                 </motion.div>
             </div>
             <div className="w-5"></div>
-            <div className="flex flex-col h-full w-full justify-center items-end font-Familjen">
+            <div className="flex flex-col h-full w-full justify-center items-end font-Familjen pl-5">
                 <div className="flex flex-col w-full border-b-solid border-b-lightCharcoal border-b-1 py-6 gap-2">
                     <p className="text-terracota text-base text-bold">PROFILE</p>
                     <div className="flex flex-col gap-1">

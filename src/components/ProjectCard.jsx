@@ -7,7 +7,7 @@ function ProjectCard ({projects, children}){
                 <div className="flex w-full h-max flex-col gap-10">
                   <div className="flex flex-row items-center gap-1">
                     <p className="text-rust font-Antic text-bold text-5xl italic">{projects.number}</p>
-                    <div className="h-full w-full flex  pt-7"><hr className="w-1/2 border-dark-gray"/></div>
+                    <div className="h-full w-full flex  pt-2"><hr className="w-1/2 border-dark-gray"/></div>
                     
                   </div>
                   <p className="text-white font-bold text-7xl">{projects.title}</p>
@@ -15,7 +15,7 @@ function ProjectCard ({projects, children}){
                   </p>
                   <div className="flex flex-col gap-5">
                     <p className=" text-lightCharcoal">TOOLKIT</p>
-                    <div className="flex flex-row gap-5">
+                    <div className="flex flex-row gap-5 flex-wrap">
                         {projects.toolkit.map((item, index)=>(
                             <div key={index} className="py-2 px-5 bg-dark-gray border-1 border-solid border-lightCharcoal rounded-full"><p>{item}</p></div>
                         ))}

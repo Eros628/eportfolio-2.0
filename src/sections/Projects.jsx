@@ -1,6 +1,10 @@
-import { motion, useAnimationFrame, useInView, useMotionValue, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useAnimationFrame, useInView, useMotionValue, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
+import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowBackIosNew } from "react-icons/md";
+
+
 
 
 function Projects({stacks}){
@@ -14,6 +18,9 @@ function Projects({stacks}){
   const containerProject = useRef(null);
 
   const inView = useInView(containerProject);
+
+  const [indexSecondProject, setIndexSecondProject] = useState(0);
+  const [indexThirdProject, setIndexThirdProject] = useState(0);
 
 
 
@@ -45,9 +52,27 @@ function Projects({stacks}){
       toolkit: ["Flutter", "Firebase", "Dart", "Arduino", "ESP32"],
       sourceCode: "https://github.com/Eros628/PlastiCash_App",
       liveURL: ""
+    },
+    {
+      number: "02",
+      title: "GitCollect",
+      description: "GitCollect is an advanced GitHub discovery and curation platform built with React and Express.js. It leverages the GitHub Search API to let developers seamlessly query repositories, users, and organizations through a highly granular, multi-parameter UI filter. To architect around strict API rate limits, the application integrates GitHub OAuth—routing requests through the user's own authenticated token—and utilizes TanStack Query for aggressive frontend caching to minimize redundant network calls. While the core search engine and authentication flow are fully operational, the project is currently in active development to implement its signature feature: a personalized, folder-based repository collection system engineered with a PostgreSQL database and the Prisma ORM.",
+      toolkit: ["React", "Express.js", "TanStack Query", "Github API", "OAuth", "PostgresSQL", "Prisma"],
+      sourceCode: "https://github.com/Eros628/Git-Collect",
+      liveURL: "",
+      img: ["src/assets/imgs/git-collect-login-ui.png", "src/assets/imgs/git-collect-home-page-ui.png", "src/assets/imgs/git-collect-search-ui.png"]
+    },
+    {
+      number: "03",
+      title: "Portfolio V2",
+      description: "I engineered Portfolio V2 from the ground up to serve as a live demonstration of my frontend architecture and UI/UX capabilities. Utilizing this project as a dedicated technical sandbox to master Tailwind CSS and Framer Motion, I built the application on a strict React component structure to ensure seamless maintainability and optimal performance. To elevate the user experience, I orchestrated fluid scroll animations, responsive component states, and seamless page transitions to establish a premium, cohesive dark-mode aesthetic. Beyond acting as a standard digital resume, this platform stands as a tangible proof-of-concept for my ability to rapidly adopt modern frameworks and execute high-end frontend design.",
+      toolkit: ["React", "Tailwind CSS", "Framer Motion"],
+      sourceCode: "https://github.com/Eros628/eportfolio-2.0",
+      liveURL: "",
+      img: [""]
     }
-   
   ]
+
 
     return(
       <div ref={containerProject} className="h-full w-full flex flex-col bg-deep-charcoal px-50">
@@ -161,77 +186,54 @@ function Projects({stacks}){
                   </motion.div>
               </div>
            </ProjectCard>
-             <ProjectCard projects={projects[0]} >
-              <div className="flex flex-col items-center justify-center w-full h-full  gap-5">
-                  <motion.div onMouseEnter={
-                    ()=>{
-                      setisHoverFirstContainer(true);
+           <ProjectCard projects={projects[1]} >
+             <div className="flex justify-center flex-col w-full h-full gap-5">
+              <div className="h-1/2 w-full">
+                  <AnimatePresence mode="wait" >
+                  <motion.img className="h-full w-full object-fit"
+                  key={indexSecondProject}
+                  src={projects[1].img[indexSecondProject]}
+                  initial={{x: 60}}
+                  animate={{x:0}}
+                  exit={{opacity: -60}}
+                  transition={{ease: "easeInOut", duration: 0.5}}
+                  ></motion.img>
+                </AnimatePresence>
+              </div>
+              <div className="flex w-full justify-center gap-10">
+                <button onClick={()=>{
+                  if(indexSecondProject <=0 ){
+                    return;
+                  }
+                  else{
+                    setIndexSecondProject((prev)=> prev - 1);
+                  }
+                }}><MdArrowBackIosNew/></button>
+                <div className="flex gap-2 px-3 py-1  h-full w-max ">
+                  {Array.from({length: 3}).map((_, index)=>(
+                    <motion.div 
+                    style={{background: index == indexSecondProject? "#D47759" : "#A4A4A4"}}
+                    key={index} className="h-[10px] w-[10px] rounded-full"></motion.div>
+                  ))}
+                  
+                </div>
+                <button onClick={
+                  ()=>{
+                    if(indexSecondProject >=2){
+                      return;
                     }
-                  } 
-                    onMouseLeave={
-                      ()=>{
-                        setisHoverFirstContainer(false);
-                      }
-                    }
-                  animate={{
-                    background: isHoverFirstContainer? "radial-gradient(circle at center top, #2D4B35 0%, #131313 76%)": "radial-gradient(circle at center top, #424342 0%, #181818 76%)" ,
-                    border: isHoverFirstContainer ? "1px solid #2D4B35" : " 1px solid transparent"
-                  }}
-                  className="flex flex-col w-full h-1/2 box-border  rounded-xl">
-                    <div className="flex gap-2 items-center px-8 py-5">
-                      <div className="h-[10px] w-[10px] rounded-full bg-dark-green"></div>
-                      <p className="text-sm text-white"><span className="text-lightCharcoal">User app</span> &mdash; consumer experience</p>
-                    </div>
-                    <div className="flex justify-center items-center w-full  h-full relative">
-                      <motion.div 
-                      animate={{x: isHoverFirstContainer ? -70 : 0}}
-                      transition={{ease: 'easeInOut', duration: 0.5}}
-                      className="w-[200px] h-max left-30 absolute shadow-xl">
-                        <img src="src/assets/imgs/plastiCash-project-home-ui.png" alt="PlastiCash Home Page UI" />
-                      </motion.div>
-                      <motion.div
-                      animate={{y: isHoverFirstContainer ? 10 : 0}}
-                      transition={{ease: 'easeInOut', duration: 0.5}}
-                      className="w-[210px] -top-2 h-max absolute z-1 shadow-xl">
-                        <img src="src/assets/imgs/plastiCash-project-start-ui.png" alt="PlastiCash Start Up UI" />
-                      </motion.div>
-                      <motion.div 
-                      animate={{x: isHoverFirstContainer ? 70 : 0}}
-                      transition={{ease: 'easeInOut', duration: 0.5}}
-                      className="w-[200px] right-30 h-max absolute ">
-                        <img  src="src/assets/imgs/plastiCash-project-user-ui.png " alt="PlastiCash User Page UI " />
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                  <motion.div 
-                  animate={{background: isHoverSecondContainer ? "linear-gradient(to right, #1c5c47, #16352a 70%)" : "linear-gradient(to right, #1e4a3a, #16352a 70%)", border: isHoverSecondContainer ? "1px solid #1c5c47" : " 1px solid transparent"}}
-                  onMouseEnter={
-                    ()=>{
-                      setIsHoverSecondContainer(true);
-                    }
-                  } 
-                  onMouseLeave={
-                    ()=>{
-                      setIsHoverSecondContainer(false);
+                    else{
+                      setIndexSecondProject((prev)=> prev + 1);
                     }
                   }
-                  className="w-full h-[200px] rounded-xl relative flex  overflow-hidden">
-                    <div className="flex flex-col gap-7 px-8 py-5">
-                      <div className="flex flex-row gap-2 items-center">
-                        <div className="h-[10px] w-[10px] rounded-full bg-white"></div>
-                        <p className="text-sm text-white font-thin"><span className="text-lightCharcoal">Machine App</span> &mdash; kiosk interface</p>
-                      </div>
-                      <div className="flex flex-col">
-                        <p className="text-xl text-white font-bold">Bottle it up, Cash it out</p>
-                        <p className="text-base text-white font-thin">The in-device interface running on the recycling kiosk itself</p>
-                      </div>
-                    </div>
-                    <motion.div 
-                    className="w-full h-max ">
-                      <img src="src/assets/imgs/plastiCash-project-machine-start-ui.png" alt="PlastiCash Machine Count Bottle UI" />
-                    </motion.div>
-                  </motion.div>
+                }><MdArrowForwardIos/></button>
               </div>
+             </div>
+           </ProjectCard>
+           <ProjectCard projects={projects[2]} >
+             <div className="flex w-full h-full">
+                <img ></img>
+             </div>
            </ProjectCard>
           </div>
          
